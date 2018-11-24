@@ -13,7 +13,7 @@ T0= 1000 # initial temperature
 M = 300
 N= 15 # move to neighbourhood
 alpha = 0.85 # cooling grade
-z_int = ((x0**2)+y0-11)**2 + (x0+(y0**2)-7)**2 # objective function
+z_int = ((x0**2)+y0-11)**2 + (x0+(y0**2)-7)**2 # objective function &  Himmelblau Function
 
 print ('Initial X is %.3f' % x0)
 print ('Initial Y is %.3f' % y0)
