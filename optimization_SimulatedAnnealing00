@@ -3,6 +3,9 @@
 # https://ipfs.io/ipfs/QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco/wiki/Himmelblau's_function.html
 # https://www.udemy.com/optimization-with-metaheuristics/learn/v4/t/lecture/10233916?start=528
 
+import warnings
+warnings.filterwarnings("ignore")
+
 import numpy as np
 import matplotlib.pyplot as plt
 
