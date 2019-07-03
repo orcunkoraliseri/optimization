@@ -1,0 +1,33 @@
+#https://waterprogramming.wordpress.com/2017/03/03/a-simple-allocation-optimiz-problem-in-platypus/
+#https://github.com/Project-Platypus/Platypus
+
+from platypus.algorithms import NSGAII
+from platypus.core import Problem
+from platypus.types import Real
+
+class energycostopt(Problem):
+
+    def __init__(self):
+        super(energycostopt, self).__init__(9, 3)
+        self.types[:] = [Real(0, 35), Real(0, 35), Real(0, 35),Real(0, 35),
+                         Real(0, 38),Real(0, 31),Real(0,64),Real(0, 26),Real(0,1)]
+
+    def evaluate(self, solution):
+        wN = solution.variables[0]
+        wE = solution.variables[1]
+        wS = solution.variables[2]
+        wW = solution.variables[3]
+        fC = solution.variables[4]
+        rC = solution.variables[5]
+        wC = solution.variables[6]
+        efC = solution.variables[7]
+        hvac = solution.variables[8]
+        Y1 = 99.711 -0.00724*wN-0.00070*wE-0.01457*wS-0.26557*wW+0.06033*fC-0.01884*rC-0.00043*wC -0.00995*efC -15.5698*hvac
+        Y2 = 15409284 - 4560*wN - 8303*wE - 1866*wS - 15522*wW + 52191*fC + 582*rC + 2071*wC+ 2795*efC + 950333*hvac
+        solution.objectives[:] = [Y1,Y2]
+
+algorithm = NSGAII(energycostopt(),population_size=100)
+algorithm.run(100)
+
+for solution in algorithm.result:
+    print(solution.objectives)
